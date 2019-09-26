@@ -1,0 +1,54 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  # For extra security set this to only accept connections on localhost if NGINX is on the same machine
+  # server_host: 127.0.0.1
+  # Update this line to be your domain
+  base_url: !secret http_base_url
+  use_x_forwarded_for: true
+  # You must set the trusted proxy IP address so that Home Assistant will properly accept connections
+  # Set this to your NGINX machine IP, or localhost if hosted on the same machine.
+  trusted_proxies: 127.0.0.1
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_key
+
+# Mobile Support (iOS)
+ios:
+
+# Modernform Fans.
+modernforms:
+  - host: 172.28.1.1/bmf
+    name: "Bedroom-Fan"
+    light: true
+  - host: 172.28.1.1/lmf
+    name: "LivingRoom-Fan"
+    light: true
+
+# Tuya
+tuya:
+  username: !secret tuya_username
+  password: !secret tuya_password
+  country_code: "1"
+
+# RoboRock
+vacuum:
+  - platform: xiaomi_miio
+    host: 172.28.1.3
+    token: !secret miio_token
+    name: "Smartin junior"
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Includes
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+zone: !include zones.yaml
+

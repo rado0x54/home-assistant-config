@@ -1,0 +1,18 @@
+- name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  icon: mdi:home
+- name: Jordan Work
+  latitude: !secret owi_lat
+  longitude: !secret owi_long
+  icon: mdi:lightbulb-on-outline
+- name: Gym
+  latitude: !secret gym_lat
+  longitude: !secret gym_long
+  radius: 50
+  icon: mdi:dumbbell
+- name: Grocery Store
+  latitude: !secret hfm_lat
+  longitude: !secret hfm_long
+  radius: 50
+  icon: mdi:food-apple
