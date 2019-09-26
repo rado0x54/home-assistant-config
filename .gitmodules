@@ -1,3 +1,0 @@
-[submodule "custom_components/ha-modernforms"]
-	path = custom_components/ha-modernforms
-	url = git@github.com:rado0x54/ha-modernforms.git
