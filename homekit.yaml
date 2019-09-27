@@ -1,0 +1,12 @@
+  filter:
+    include_domains:
+      - light
+      - fan
+      - sensor
+    exclude_entities:
+      - light.all_lights
+      - sensor.dark_sky_temperature_0h
+      - sensor.dark_sky_temperature_1h
+  entity_config:
+    sensor.dark_sky_temperature:
+      name: NYC Temp

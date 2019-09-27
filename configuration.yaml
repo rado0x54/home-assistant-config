@@ -2,6 +2,17 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+frontend:
+  themes: !include themes.yaml
+
+homeassistant:
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  elevation: 30
+  unit_system: metric
+  time_zone: America/New_York
+  name: NYC509
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   # For extra security set this to only accept connections on localhost if NGINX is on the same machine
@@ -13,6 +24,10 @@ http:
   # Set this to your NGINX machine IP, or localhost if hosted on the same machine.
   trusted_proxies: 127.0.0.1
 
+# Updater
+updater:
+  reporting: false
+
 # IFTTT
 ifttt:
   key: !secret ifttt_key
@@ -23,10 +38,10 @@ ios:
 # Modernform Fans.
 modernforms:
   - host: 172.28.1.1/bmf
-    name: "Bedroom-Fan"
+    name: Bedroom
     light: true
   - host: 172.28.1.1/lmf
-    name: "LivingRoom-Fan"
+    name: Living Room
     light: true
 
 # Tuya
@@ -48,7 +63,9 @@ tts:
 
 # Includes
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_list automations
 script: !include scripts.yaml
 zone: !include zones.yaml
+homekit: !include homekit.yaml
+sensor: !include_dir_list sensors/
 

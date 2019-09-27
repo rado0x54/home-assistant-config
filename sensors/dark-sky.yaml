@@ -1,0 +1,15 @@
+platform: darksky
+api_key: !secret darksky-key
+forecast:
+  - 0
+hourly_forecast:
+  - 0
+  - 1
+monitored_conditions:
+  - summary
+  - icon
+  - temperature
+  - precip_probability
+  - sunset_time
+  - uv_index
+scan_interval: '00:05:00'
