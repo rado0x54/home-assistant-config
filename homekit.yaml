@@ -3,6 +3,8 @@
       - light
       - fan
       - sensor
+      - switch
+      - climate
     exclude_entities:
       - light.all_lights
       - sensor.dark_sky_temperature_0h

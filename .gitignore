@@ -14,3 +14,7 @@ known_devices.yaml
 
 .ios.conf
 .homekit.state
+
+tts/
+
+.vscode/

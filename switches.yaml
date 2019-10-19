@@ -1,0 +1,107 @@
+#### Power Strip
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: 3Stone-1
+  state_topic: "stat/3stone/strip/RESULT"
+  value_template: "{{ value_json.POWER1 }}"
+  command_topic: "cmnd/3stone/strip/POWER1"
+  availability_topic: "tele/3stone/strip/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: 3Stone-2
+  state_topic: "stat/3stone/strip/RESULT"
+  value_template: "{{ value_json.POWER2 }}"
+  command_topic: "cmnd/3stone/strip/POWER2"
+  availability_topic: "tele/3stone/strip/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: 3Stone-3 (TV)
+  state_topic: "stat/3stone/strip/RESULT"
+  value_template: "{{ value_json.POWER3 }}"
+  command_topic: "cmnd/3stone/strip/POWER3"
+  availability_topic: "tele/3stone/strip/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: 3Stone-4 (AppleTV)
+  state_topic: "stat/3stone/strip/RESULT"
+  value_template: "{{ value_json.POWER4 }}"
+  command_topic: "cmnd/3stone/strip/POWER4"
+  availability_topic: "tele/3stone/strip/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: 3Stone-USB
+  state_topic: "stat/3stone/strip/RESULT"
+  value_template: "{{ value_json.POWER5 }}"
+  command_topic: "cmnd/3stone/strip/POWER5"
+  availability_topic: "tele/3stone/strip/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+#### Single Plugs
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: Boosted
+  state_topic: "stat/gosund/plug/1/RESULT"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/gosund/plug/1/POWER"
+  availability_topic: "tele/gosund/plug/1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: Gosund-2
+  state_topic: "stat/gosund/plug/2/RESULT"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/gosund/plug/2/POWER"
+  availability_topic: "tele/gosund/plug/2/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+- platform: mqtt
+  icon: mdi:power-socket-us
+  name: Gosund-3
+  state_topic: "stat/gosund/plug/3/RESULT"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/gosund/plug/3/POWER"
+  availability_topic: "tele/gosund/plug/3/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
