@@ -67,9 +67,6 @@ media_player:
     host: 172.28.1.25
     port: 8002
     mac: 00:C3:F4:41:2D:FB
-    sourcelist: '{"TV": "KEY_TV", "Apple TV": "KEY_HDMI1", "Nintendo Switch": "KEY_HDMI2", "RaspberryPi": "KEY_HDMI3", "PlayStation": "KEY_HDMI4"}'
-    # applist: "YouTube, Apple TV, Plex, Prime Video, Spotify"
-    protocol: ctl_qled
 
 # Includes
 notify: !include_dir_merge_list notify/
