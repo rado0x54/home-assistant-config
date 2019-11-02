@@ -1,5 +1,7 @@
 # Operational files
 *.db
+*.db-shm
+*.db-wal
 *.log
 
 # Ignore folders.
