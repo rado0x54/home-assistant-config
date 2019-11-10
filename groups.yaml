@@ -1,0 +1,7 @@
+all_covers:
+  name: All Blinds
+  entities:
+    - cover.blind_bedroom
+    - cover.blind_living_room_e1
+    - cover.blind_living_room_e2
+    - cover.blind_living_room_s
