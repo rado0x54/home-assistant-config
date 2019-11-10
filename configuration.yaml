@@ -3,7 +3,7 @@
 # Owner: rado0x54
 
 # Replacing meta-component "default config" with individual entries.
-automation: !include_dir_list automations
+automation: !include_dir_merge_list automations
 config:
 frontend:
   themes: !include themes.yaml
