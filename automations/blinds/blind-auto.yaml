@@ -1,0 +1,25 @@
+- alias: 'Blinds - Auto Open'
+  trigger:
+    - platform: sun
+      event: sunrise
+    - platform: time
+      at: '06:15:00'
+  condition:
+    - condition: sun
+      after: sunrise
+    - condition: time
+      after: '06:15:00'
+  action:
+   service: cover.open_cover
+   entity_id: group.all_covers
+
+- alias: 'Blinds - Auto Close'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+00:15:00'
+  action:
+   service: cover.close_cover
+   entity_id: group.all_covers
+
+
