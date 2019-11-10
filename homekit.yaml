@@ -5,6 +5,7 @@
       - sensor
       - switch
       - climate
+      - cover
     exclude_entities:
       - light.all_lights
       - sensor.dark_sky_temperature_0h
