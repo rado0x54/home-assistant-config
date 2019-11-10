@@ -1,4 +1,4 @@
-- alias: "Power state on HA start-up"
+- alias: 'System - Initial Sonoff State'
   trigger:
     platform: homeassistant
     event: start

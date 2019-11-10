@@ -1,4 +1,4 @@
-- alias: 'Update notification'
+- alias: 'Notification - HA update'
   trigger:
     - platform: state
       entity_id: binary_sensor.updater

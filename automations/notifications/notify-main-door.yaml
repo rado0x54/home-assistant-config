@@ -1,4 +1,4 @@
-- alias: 'Main Door Opened'
+- alias: 'Notification - Main Door'
   trigger:
     platform: state
     entity_id: binary_sensor.openclose_13

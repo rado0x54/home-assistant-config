@@ -1,4 +1,4 @@
-- alias: 'Send notification when sun rises'
+- alias: 'Notification - Weather Report'
   trigger:
     - platform: time
       at: '07:00:00'

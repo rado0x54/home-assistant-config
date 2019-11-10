@@ -1,6 +1,6 @@
 # MQTT HVAC uses individual command topics but HeatPump does not
 # so use an automation to push the commands to the HP (only one automation needed due to wildcards):
-- alias: 'Redirect all MQTT HVAC set commands to the heatpumps'
+- alias: 'Climate - Redirect all MQTT HVAC commands'
   trigger:
     - platform: mqtt
       topic: +/heatpump/_set/+
