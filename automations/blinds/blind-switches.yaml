@@ -1,0 +1,30 @@
+### Toggle Blinds
+#
+# This script operates under the assumptions that deconz event fire with event
+# and maps those to service calls:
+# 1002: cover.open_cover
+# 2002: cover.close_cover 
+# XXXX: cover.stop_cover
+# and it expects that switches have the same ID as covers + "_switch"
+
+- alias: 'Toggle Blinds via Remotes'
+  trigger:
+    platform: event
+    event_type: deconz_event
+  condition:
+    condition: template
+    value_template: '{{ trigger.event.data.id.startswith("blind_") and trigger.event.data.id.endswith("_switch")}}'
+  action:
+    service_template: >
+      {% if trigger.event.data.event == 1002 %}
+        cover.open_cover
+      {% elif trigger.event.data.event == 2002 %}
+        cover.close_cover
+      {% else %}
+        cover.stop_cover
+      {% endif %}
+    #entity_id: cover.blind_living_room_s
+    data_template:
+      # Remove "_switch" from id
+      entity_id: '{{ "cover." + trigger.event.data.id[:-7] }}'
+
