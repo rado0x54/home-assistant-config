@@ -1,0 +1,79 @@
+### Toggle Sonos Speaker with Remote Automation
+- alias: 'Sonos: Control Playing'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: symfonisk_sound_controller
+  condition:
+    - condition: state
+      entity_id: sensor.any_sonos_playing
+      state: 'True'
+    - condition: template
+      value_template: >-
+        {{ 
+          trigger.event.data.event == 3001 or
+          trigger.event.data.event == 2001 or
+          trigger.event.data.event == 1002 or
+          trigger.event.data.event == 1004 or
+          trigger.event.data.event == 1005
+        }}
+  action:
+    service_template: >
+      {% if trigger.event.data.event == 3001 %}
+        media_player.volume_up
+      {% elif trigger.event.data.event == 2001 %}
+        media_player.volume_down
+      {% elif trigger.event.data.event == 1002 %}
+        media_player.media_play_pause
+      {% elif trigger.event.data.event == 1004 %}
+        media_player.media_next_track
+      {% elif trigger.event.data.event == 1005 %}
+        media_player.media_previous_track
+      {% else %}
+        {# never reached due to condition #}
+      {% endif %}
+    data_template:
+      entity_id: >-
+        {% if trigger.event.data.event == 3001 or
+              trigger.event.data.event == 2001
+        %}
+          {# adjust volume of all speakers #}
+          {{ expand('group.all_sonos') | selectattr('state','eq','playing') | map(attribute='entity_id') | join(', ') }}
+        {% else %}
+          {# only to single speaker #}
+          {{ expand('group.all_sonos') | selectattr('state','eq','playing') | map(attribute='entity_id') | first }}
+        {% endif %}
+
+
+## Start Playback if nothing is currently playing
+- alias: 'Sonos: Start Playing'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: symfonisk_sound_controller
+  condition:
+    - condition: state
+      entity_id: sensor.any_sonos_playing
+      state: 'False'
+    - condition: template
+      value_template: >-
+        {{ 
+          trigger.event.data.event == 1002 or
+          trigger.event.data.event == 1004 or
+          trigger.event.data.event == 1005
+        }}
+  action:
+    service: 'media_player.media_play_pause'
+    data_template:
+      entity_id: >-
+        {% if trigger.event.data.event == 1002 %}
+          media_player.living_room
+        {% elif trigger.event.data.event == 1004 %}
+          media_player.kitchen
+        {% elif trigger.event.data.event == 1005 %}
+          media_player.bedroom
+        {% else %}
+          {# never reached due to condition #}
+        {% endif %}
