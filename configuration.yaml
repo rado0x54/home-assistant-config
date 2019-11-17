@@ -81,6 +81,12 @@ media_player:
     port: 8002
     mac: 00:C3:F4:41:2D:FB
 
+# Workday Sensor
+binary_sensor:
+  - platform: workday
+    country: US
+    province: NY
+
 # Includes
 notify: !include_dir_merge_list notify/
 switch: !include switches.yaml
@@ -88,6 +94,6 @@ climate: !include climate.yaml
 group: !include groups.yaml
 zone: !include zones.yaml
 homekit: !include homekit.yaml
-sensor: !include_dir_list sensors/
+sensor: !include_dir_merge_list sensors/
 
 

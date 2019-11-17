@@ -1,7 +1,19 @@
-all_covers:
-  name: All Blinds
+living_room_blinds:
+  name: Living Room Blinds
   entities:
-    - cover.blind_bedroom
     - cover.blind_living_room_e1
     - cover.blind_living_room_e2
     - cover.blind_living_room_s
+
+all_motion:
+  name: All Motion Sensors
+  entities:
+    - binary_sensor.presence_12
+    - binary_sensor.presence_7
+
+all_sonos:
+  name: All Sonos Speakers
+  entities:
+    - media_player.living_room
+    - media_player.kitchen
+    - media_player.bedroom
