@@ -71,6 +71,13 @@ vacuum:
     token: !secret miio_token
     name: "Smartin junior"
 
+# Camera
+camera:
+  - platform: generic
+    name: Home Cam Living Rool
+    still_image_url: http://yi-cam-1:8080/cgi-bin/snapshot.sh?res=low
+    stream_source: rtsp://yi-cam-1/ch0_0.h264
+
 # Text to speech
 tts:
   - platform: google_translate
