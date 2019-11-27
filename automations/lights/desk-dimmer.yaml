@@ -1,0 +1,20 @@
+### Toggle Desk Lamp via Dimmer
+
+- alias: 'Toggle Desk Lamp via Dimmer'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+        id: tradfri_wireless_dimmer
+  action:
+    service: light.turn_on
+    #entity_id: cover.blind_living_room_s
+    data_template:
+      entity_id: light.desk
+      brightness: >
+        {% set bri = state_attr('light.desk', 'brightness') | int %}
+        {% if trigger.event.data.event == 2002 %}
+          {{ [bri+51, 255] | min }}
+        {% else %}
+          {{ [bri-51, 0] | max }}
+        {% endif %}
