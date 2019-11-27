@@ -21,6 +21,9 @@ updater:
   reporting: false
 zeroconf:
 
+# Automatic Discovery
+discovery:
+
 homeassistant:
   latitude: !secret home_lat
   longitude: !secret home_long

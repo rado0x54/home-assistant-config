@@ -1,5 +1,5 @@
 - name: all_residents
   platform: group
   services:
-    - service: ios_mriedels_iphone
-    - service: ios_jordan_lynn_fahles_iphone
+    - service: mobile_app_mriedels_iphone
+    - service: mobile_app_jordan_lynn_fahles_iphone
