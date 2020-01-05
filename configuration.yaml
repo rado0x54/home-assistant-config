@@ -12,7 +12,7 @@ logbook:
 map:
 mobile_app:
 person:
-script: !include scripts.yaml
+script: !include_dir_merge_named scripts
 ssdp:
 sun:
 system_health:
@@ -31,6 +31,8 @@ homeassistant:
   unit_system: metric
   time_zone: America/New_York
   name: NYC509
+  whitelist_external_dirs:
+    - /webshare
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
@@ -49,7 +51,12 @@ ifttt:
   key: !secret ifttt_key
 
 # Mobile Support (iOS)
-ios:
+# Disabled from version 2.0 of the App.
+# Not using actionable notifications atm.
+# ios:
+
+# Streaming Support
+stream:
 
 # MQTT
 mqtt:
@@ -60,26 +67,39 @@ mqtt:
 
 # Modernform Fans.
 modernforms:
-  - host: 172.28.1.1/bmf
+  - host: openwrt/bmf
     name: Bedroom
     light: true
-  - host: 172.28.1.1/lmf
+  - host: openwrt/lmf
     name: Living Room
     light: true
 
 # RoboRock
 vacuum:
   - platform: xiaomi_miio
-    host: 172.28.1.3
+    host: rockrobo
     token: !secret miio_token
     name: "Smartin junior"
 
 # Camera
 camera:
   - platform: generic
-    name: Home Cam Living Rool
-    still_image_url: http://yi-cam-1:8080/cgi-bin/snapshot.sh?res=low
+    name: Home Cam Living Room
+    still_image_url: http://yi-cam-1:8080/cgi-bin/snapshot.sh
     stream_source: rtsp://yi-cam-1/ch0_0.h264
+  - platform: generic
+    name: Home Cam Kitchen
+    still_image_url: http://yi-cam-2:8080/cgi-bin/snapshot.sh
+    stream_source: rtsp://yi-cam-2/ch0_0.h264
+
+telegram_bot:
+  - platform: webhooks
+    api_key: !secret telegram_nyc509_bot_key
+    allowed_chat_ids:
+      - !secret telegram_nyc509_chatid
+      - !secret telegram_nyc509_test_chatid
+      - !secret telegram_rado0x54_chatid
+      - !secret telegram_jordan_chatid
 
 # Text to speech
 tts:
@@ -87,7 +107,7 @@ tts:
 
 media_player:
   - platform: samsungtv_custom
-    host: 172.28.1.25
+    host: samsung
     port: 8002
     mac: 00:C3:F4:41:2D:FB
 
@@ -96,6 +116,11 @@ binary_sensor:
   - platform: workday
     country: US
     province: NY
+
+# Shell Commands
+shell_command:
+  link_latest: '(cd {{ working_directory }} && ln -fs $(ls -t {{ ls_expression }} | head -n 1) {{ latest_filename }})'
+  copy: 'cp {{ src_filename }} {{ dest_filename }}'
 
 # Includes
 notify: !include_dir_merge_list notify/

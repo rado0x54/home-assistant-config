@@ -1,0 +1,7 @@
+- name: telegram_nyc509
+  platform: telegram
+  chat_id: !secret telegram_nyc509_chatid
+
+- name: telegram_nyc509_test
+  platform: telegram
+  chat_id: !secret telegram_nyc509_test_chatid

@@ -1,0 +1,37 @@
+- alias: 'Notification - Movement & Image'
+  trigger:
+    platform: state
+    entity_id: group.all_motion
+    to: 'on'
+  action:
+    - service: camera.snapshot
+      entity_id: 
+        - camera.home_cam_living_room
+        - camera.home_cam_kitchen
+      data:
+        filename: '/webshare/snapshots/latest_{{ entity_id.entity_id }}.jpg'
+    - service: shell_command.copy
+      data_template:
+        src_filename: '/webshare/snapshots/latest_camera.home_cam_living_room.jpg'
+        dest_filename: '/webshare/snapshots/{{ now().strftime("%Y%m%d-%H%M%S") }}_camera.home_cam_living_room.jpg'
+    - service: shell_command.copy
+      data_template:
+        src_filename: '/webshare/snapshots/latest_camera.home_cam_kitchen.jpg'
+        dest_filename: '/webshare/snapshots/{{ now().strftime("%Y%m%d-%H%M%S") }}_camera.home_cam_kitchen.jpg'
+    - service: notify.telegram_nyc509_test
+      data:
+        title: "Movement detected at NYC509"
+        message: "Here are the current images."
+        data:
+          photo:
+            - url: 'https://nyc.riedel-privat.de/home-assistant/snapshots/latest_camera.home_cam_living_room.jpg'
+              username: !secret ha_web_username
+              password: !secret ha_web_password
+              caption: 'Living Room at {{ now().strftime("%Y%m%d-%H%M%S") }}' 
+            - url: 'https://nyc.riedel-privat.de/home-assistant/snapshots/latest_camera.home_cam_kitchen.jpg'
+              username: !secret ha_web_username
+              password: !secret ha_web_password
+              caption: 'Kitchen at {{ now().strftime("%Y%m%d-%H%M%S") }}'
+
+
+
