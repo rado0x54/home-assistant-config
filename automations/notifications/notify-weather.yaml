@@ -3,7 +3,7 @@
     - platform: time
       at: '07:00:00'
   action:
-    service: notify.all_residents
+    service: notify.telegram_nyc509
     data:
       title: "NYC509 - Céline Forecast"
       message: >
