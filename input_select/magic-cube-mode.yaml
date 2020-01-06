@@ -1,0 +1,11 @@
+magic_cube_mode:
+  name: Magic Cube Mode
+  options:
+    - Face1
+    - Face2
+    - Face3
+    - Face4
+    - Face5
+    - Face6
+  initial: Face1 
+  icon: mdi:cube-outline
