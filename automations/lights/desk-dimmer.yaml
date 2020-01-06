@@ -1,5 +1,4 @@
 ### Toggle Desk Lamp via Dimmer
-
 - alias: 'Toggle Desk Lamp via Dimmer'
   trigger:
     platform: event
@@ -18,3 +17,43 @@
         {% else %}
           {{ [bri-51, 0] | max }}
         {% endif %}
+
+
+### Toggle Desk Lamp via Magic Cube Face 1
+- alias: 'Toggle Desk Lamp via Magic Cube'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+        id: magic_cube_gestures
+        event: 1001
+  action:
+    service: light.toggle
+    entity_id: light.desk
+
+### Dimm Desk Lamp via Magic Cube Face 1
+- alias: 'Dim Desk via Magic Cube'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+        id: magic_cube_rotation
+  condition:
+    - condition: state
+      entity_id: input_select.magic_cube_mode
+      state: 'Face1'
+    - condition: state
+      entity_id: light.desk
+      state: 'on'
+  action:
+    service: light.turn_on
+    #entity_id: cover.blind_living_room_s
+    data_template:
+      entity_id: light.desk
+      # trigger.event.data.event is degrees * 100
+      # range in half a rotation.
+      brightness: >
+        {% set bri = state_attr('light.desk', 'brightness') | int %}
+        {% set adj = ((trigger.event.data.event / 18000) * 255) | int %}
+        {{ bri + adj }}
+
