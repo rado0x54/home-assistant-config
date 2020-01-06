@@ -4,12 +4,12 @@
     - platform: sun
       event: sunrise
     - platform: time
-      at: '06:15:00'
+      at: '06:30:00'
   condition:
     - condition: sun
       after: sunrise
     - condition: time
-      after: '06:15:00'
+      after: '06:30:00'
   action:
     service: cover.open_cover
     data_template:
@@ -23,7 +23,7 @@
   trigger:
     platform: sun
     event: sunset
-    offset: '+00:45:00'
+    offset: '+00:25:00'
   action:
     service: cover.close_cover
     entity_id: group.living_room_blinds, cover.blind_bedroom
