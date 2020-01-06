@@ -1,0 +1,13 @@
+- alias: 'Notification - Paper Trash'
+  trigger:
+    - platform: time
+      at: '7:30:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: notify.telegram_nyc509
+    data:
+      title: "NYC509 - Paper Trash"
+      message: "It's time to take down the paper trash at NYC 509!"
