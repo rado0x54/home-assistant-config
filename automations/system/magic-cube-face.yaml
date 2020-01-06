@@ -1,0 +1,14 @@
+- alias: Change Magic Cube Face
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: magic_cube_gestures
+  condition:
+    condition: template
+    value_template: "{{ trigger.event.data.event < 7000 }}"
+  action:
+     service: input_select.select_option
+     data_template:
+      entity_id: input_select.magic_cube_mode
+      option: "Face{{ ( trigger.event.data.event / 1000) | round() }}"

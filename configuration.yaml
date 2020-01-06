@@ -130,5 +130,6 @@ group: !include groups.yaml
 zone: !include zones.yaml
 homekit: !include homekit.yaml
 sensor: !include_dir_merge_list sensors/
+input_select: !include_dir_merge_named input_select/
 
 
