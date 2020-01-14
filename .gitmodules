@@ -4,3 +4,6 @@
 [submodule "submodules/homeassistant-mta-subway"]
 	path = submodules/homeassistant-mta-subway
 	url = https://github.com/iicky/homeassistant-mta-subway.git
+[submodule "submodules/ha-modernforms"]
+	path = submodules/ha-modernforms
+	url = https://github.com/jimpastos/ha-modernforms.git
