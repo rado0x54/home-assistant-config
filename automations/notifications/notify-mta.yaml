@@ -1,0 +1,26 @@
+- alias: 'Notification - MTA 1 Report'
+  trigger:
+    - platform: time
+      at: '07:15:00'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - condition: template
+      value_template: >
+        {{ state_attr('sensor.mta_subway_1', 'direction_1_state') != 'Good Service' }}
+  action:
+    service: notify.telegram_nyc509
+    data:
+      title: "Beware Southbound MTA Subway 1 is not in good Service"
+      message: >
+        Status is {{ state_attr('sensor.mta_subway_1', 'direction_1_state') }}. 
+        {% if state_attr("sensor.mta_subway_1", "delays_description") -%}
+          Delays: {{ state_attr("sensor.mta_subway_1", "delays_description") }}
+        {%- endif %}
+        {% if state_attr("sensor.mta_subway_1", "service_change_description") -%}
+          Service Change: {{ state_attr("sensor.mta_subway_1", "service_change_description") }}
+        {%- endif %}
+        {% if state_attr("sensor.mta_subway_1", "planned_work_description") -%}
+          Planned Work: {{ state_attr("sensor.mta_subway_1", "planned_work_description") }}
+        {%- endif %}
