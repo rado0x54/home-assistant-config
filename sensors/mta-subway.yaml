@@ -1,0 +1,5 @@
+- platform: mta_subway
+  line:
+    - 1
+    - 2
+    - 3
