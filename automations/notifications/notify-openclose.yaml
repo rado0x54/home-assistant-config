@@ -1,4 +1,4 @@
-- alias: 'Notification - Door & Windows'
+- alias: 'Notification - OpenClose'
   trigger:
     platform: state
     entity_id: 
@@ -7,16 +7,17 @@
       - binary_sensor.openclose_24
       - binary_sensor.openclose_26
       - binary_sensor.openclose_27
+      - binary_sensor.openclose_38
     from: 'off'
     to: 'on'
   condition:
     condition: template # Throttle by not triggering push messages if triggered in the last 10 seconds
     value_template: >
-      {{ not state_attr('automation.notification_door_windows','last_triggered') or (as_timestamp(now()) - as_timestamp(state_attr('automation.notification_door_windows','last_triggered'))) > 10 }}
+      {{ not state_attr('automation.notification_openclose','last_triggered') or (as_timestamp(now()) - as_timestamp(state_attr('automation.notification_openclose','last_triggered'))) > 10 }}
   action:
     service: notify.all_residents
     data_template:
-      title: "509 2R door"
+      title: "509 2R {{ trigger.to_state.attributes.friendly_name[:-10] }}"
       # Remove " OpenClose" Suffix from Binary Sensor Friendly Name
       message: 'The {{ trigger.to_state.attributes.friendly_name[:-10] }} was opened at {{ now().strftime("%H:%M %m/%d") }}!'
       data:
