@@ -101,6 +101,12 @@ telegram_bot:
       - !secret telegram_rado0x54_chatid
       - !secret telegram_jordan_chatid
 
+# Carson Living (from Submodule until released)
+carson:
+  username: !secret carson_username
+  password: !secret carson_password
+
+
 # Text to speech
 tts:
   - platform: google_translate

@@ -4,6 +4,9 @@
 *.db-wal
 *.log
 
+# Python
+*.pyc
+
 # Ignore folders.
 .storage
 .cloud
