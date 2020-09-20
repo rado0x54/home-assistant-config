@@ -91,3 +91,50 @@
   fan_mode_state_topic: "bed/heatpump"
   mode_command_topic: "bed/heatpump/_set/mode"
   mode_state_topic: "bed/heatpump"
+
+# Office A/C with https://github.com/SwiCago/HeatPump
+- platform: mqtt
+  modes:
+    - "off"
+    - heat
+    - dry
+    - cool
+    - fan_only
+    - auto
+  fan_modes:
+    - AUTO
+    - QUIET
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+  swing_modes:
+    - AUTO
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - SWING
+  current_temperature_template: "{{ value_json.roomTemperature }}"
+  temperature_state_template: "{{ value_json.temperature }}"
+  swing_mode_state_template: "{{ value_json.vane }}"
+  fan_mode_state_template: "{{ value_json.fan }}"
+  mode_state_template: >
+    {% if value_json.power == "OFF" %}
+      off
+    {% elif value_json.mode == "FAN" %}
+      fan_only
+    {% else %}
+      {{ value_json.mode|lower }}
+    {% endif %}  
+  name: "Office A/C"
+  current_temperature_topic: "office/heatpump/status"
+  temperature_command_topic: "office/heatpump/_set/temperature"
+  temperature_state_topic: "office/heatpump"
+  swing_mode_command_topic: "office/heatpump/_set/vane"
+  swing_mode_state_topic: "office/heatpump"
+  fan_mode_command_topic: "office/heatpump/_set/fan"
+  fan_mode_state_topic: "office/heatpump"
+  mode_command_topic: "office/heatpump/_set/mode"
+  mode_state_topic: "office/heatpump"

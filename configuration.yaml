@@ -31,7 +31,8 @@ homeassistant:
   unit_system: metric
   time_zone: America/New_York
   name: NYC509
-  whitelist_external_dirs:
+  external_url: !secret external_url
+  allowlist_external_dirs:
     - /webshare
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -39,7 +40,6 @@ http:
   # For extra security set this to only accept connections on localhost if NGINX is on the same machine
   # server_host: 127.0.0.1
   # Update this line to be your domain
-  base_url: !secret http_base_url
   use_x_forwarded_for: true
   # You must set the trusted proxy IP address so that Home Assistant will properly accept connections
   # Set this to your NGINX machine IP, or localhost if hosted on the same machine.
@@ -67,17 +67,28 @@ mqtt:
 
 # Modernform Fans.
 modernforms:
-  - host: openwrt/bmf
+  - host: rooter.lan:8080/mf-br
     name: Bedroom
     light: true
-  - host: openwrt/lmf
+  - host: rooter.lan:8080/mf-lr
     name: Living Room
     light: true
+  - host: rooter.lan:8080/mf-of
+    name: Office
+    light: true
+
+# TPLink
+tplink:
+  discovery: false
+  dimmer:
+    - host: 172.28.0.112
+    - host: 172.28.0.113
+    - host: 172.28.0.114
 
 # RoboRock
 vacuum:
   - platform: xiaomi_miio
-    host: rockrobo
+    host: 172.28.0.60
     token: !secret miio_token
     name: "Smartin junior"
 
@@ -102,20 +113,20 @@ telegram_bot:
       - !secret telegram_jordan_chatid
 
 # Carson Living (from Submodule until released)
-carson:
-  username: !secret carson_username
-  password: !secret carson_password
+#carson:
+#  username: !secret carson_username
+#  password: !secret carson_password
 
 
 # Text to speech
 tts:
   - platform: google_translate
 
-media_player:
-  - platform: samsungtv_custom
-    host: samsung
-    port: 8002
-    mac: 00:C3:F4:41:2D:FB
+#media_player:
+#  - platform: samsungtv_custom
+#    host: samsung
+#    port: 8002
+#    mac: 00:C3:F4:41:2D:FB
 
 # Workday Sensor
 binary_sensor:
