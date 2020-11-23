@@ -2,4 +2,4 @@
   platform: group
   services:
     - service: mobile_app_mriedels_iphone
-    - service: mobile_app_jordan_lynn_fahles_iphone
+    - service: mobile_app_jordans_iphone

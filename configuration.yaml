@@ -46,9 +46,9 @@ http:
   trusted_proxies: 127.0.0.1
 
 
-# IFTTT
-ifttt:
-  key: !secret ifttt_key
+# Custom Recorder:
+recorder:
+  db_url: !secret recorder_db_url
 
 # Mobile Support (iOS)
 # Disabled from version 2.0 of the App.
@@ -67,15 +67,19 @@ mqtt:
 
 # Modernform Fans.
 modernforms:
-  - host: rooter.lan:8080/mf-br
+  - host: openwrt.lan:8080/mf-br
     name: Bedroom
     light: true
-  - host: rooter.lan:8080/mf-lr
+  - host: openwrt.lan:8080/mf-lr
     name: Living Room
     light: true
-  - host: rooter.lan:8080/mf-of
+  - host: openwrt.lan:8080/mf-of
     name: Office
     light: true
+
+# Wake up light
+somneo:
+  host: somneo.lan
 
 # TPLink
 tplink:
