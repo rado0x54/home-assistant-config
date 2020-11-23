@@ -13,3 +13,6 @@
 [submodule "submodules/somneo"]
 	path = submodules/somneo
 	url = git@github.com:theneweinstein/somneo.git
+[submodule "submodules/ha-carson-living"]
+	path = submodules/ha-carson-living
+	url = https://github.com/rado0x54/ha-carson-living.git
