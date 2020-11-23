@@ -10,3 +10,6 @@
 	path = submodules/ha-modernforms
 	url = https://github.com/jimpastos/ha-modernforms.git
 	ignore = dirty
+[submodule "submodules/somneo"]
+	path = submodules/somneo
+	url = git@github.com:theneweinstein/somneo.git
