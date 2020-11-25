@@ -15,7 +15,7 @@
     condition: template
     value_template: '{{ trigger.event.data.id.startswith("blind_") and trigger.event.data.id.endswith("_switch")}}'
   action:
-    service_template: >
+    service: >
       {% if trigger.event.data.event == 1002 %}
         cover.open_cover
       {% elif trigger.event.data.event == 2002 %}

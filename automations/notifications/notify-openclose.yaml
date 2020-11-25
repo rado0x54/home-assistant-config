@@ -2,12 +2,12 @@
   trigger:
     platform: state
     entity_id: 
-      - binary_sensor.openclose_13
-      - binary_sensor.openclose_14
-      - binary_sensor.openclose_24
-      - binary_sensor.openclose_26
-      - binary_sensor.openclose_27
-      - binary_sensor.openclose_38
+      - binary_sensor.openclose_5
+      - binary_sensor.openclose_6
+      - binary_sensor.openclose_7
+      - binary_sensor.openclose_8
+      - binary_sensor.openclose_22
+      - binary_sensor.openclose_23
     from: 'off'
     to: 'on'
   condition:
@@ -17,7 +17,7 @@
   action:
     service: notify.all_residents
     data_template:
-      title: "509 2R {{ trigger.to_state.attributes.friendly_name[:-10] }}"
+      title: "509 2N {{ trigger.to_state.attributes.friendly_name[:-10] }}"
       # Remove " OpenClose" Suffix from Binary Sensor Friendly Name
       message: 'The {{ trigger.to_state.attributes.friendly_name[:-10] }} was opened at {{ now().strftime("%H:%M %m/%d") }}!'
       data:

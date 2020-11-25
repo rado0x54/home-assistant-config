@@ -8,8 +8,8 @@ living_room_blinds:
 all_motion:
   name: All Motion Sensors
   entities:
-    - binary_sensor.presence_12
-    - binary_sensor.presence_7
+    - binary_sensor.presence_19
+    - binary_sensor.presence_21
 
 all_sonos:
   name: All Sonos Speakers

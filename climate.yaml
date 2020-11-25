@@ -44,6 +44,7 @@
   fan_mode_state_topic: "living/heatpump"
   mode_command_topic: "living/heatpump/_set/mode"
   mode_state_topic: "living/heatpump"
+  send_if_off: true
 
 # Bedroom A/C with https://github.com/SwiCago/HeatPump
 - platform: mqtt
@@ -91,6 +92,7 @@
   fan_mode_state_topic: "bed/heatpump"
   mode_command_topic: "bed/heatpump/_set/mode"
   mode_state_topic: "bed/heatpump"
+  send_if_off: true
 
 # Office A/C with https://github.com/SwiCago/HeatPump
 - platform: mqtt
@@ -138,3 +140,4 @@
   fan_mode_state_topic: "office/heatpump"
   mode_command_topic: "office/heatpump/_set/mode"
   mode_state_topic: "office/heatpump"
+  send_if_off: true

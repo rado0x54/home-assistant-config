@@ -19,7 +19,7 @@
           trigger.event.data.event == 1005
         }}
   action:
-    service_template: >
+    service: >
       {% if trigger.event.data.event == 3001 %}
         media_player.volume_up
       {% elif trigger.event.data.event == 2001 %}

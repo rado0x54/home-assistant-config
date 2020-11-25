@@ -1,7 +1,7 @@
 - alias: 'Notification - Paper Trash'
   trigger:
     - platform: time
-      at: '7:30:00'
+      at: '07:30:00'
   condition:
     condition: time
     weekday:
