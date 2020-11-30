@@ -25,7 +25,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-        id: magic_cube_gestures
+        id: mi_magic_cube
         event: 1001
   action:
     service: light.toggle
@@ -37,7 +37,7 @@
     platform: event
     event_type: deconz_event
     event_data:
-        id: magic_cube_rotation
+        id: mi_magic_cube
   condition:
     - condition: state
       entity_id: input_select.magic_cube_mode
@@ -45,9 +45,11 @@
     - condition: state
       entity_id: light.desk
       state: 'on'
+    - condition: template
+      # Gesture 7 & 8 are rotations
+      value_template: '{{ trigger.event.data.gesture > 6 }}'
   action:
     service: light.turn_on
-    #entity_id: cover.blind_living_room_s
     data_template:
       entity_id: light.desk
       # trigger.event.data.event is degrees * 100
