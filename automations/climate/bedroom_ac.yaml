@@ -1,0 +1,21 @@
+- alias: 'Turn on Bedroom AC'
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: state
+    entity_id: group.all_people
+    state: 'home'
+  action:
+    service: climate.set_hvac_mode
+    entity_id: climate.bedroom_a_c
+    data:
+      hvac_mode: cool
+
+- alias: 'Turn off Bedroom AC'
+  trigger:
+    - platform: time
+      at: '07:00:00'
+  action:
+    service: climate.turn_off
+    entity_id: climate.bedroom_a_c
