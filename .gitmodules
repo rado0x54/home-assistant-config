@@ -9,12 +9,16 @@
 [submodule "submodules/somneo"]
 	path = submodules/somneo
 	url = git@github.com:theneweinstein/somneo.git
+	ignore = dirty
 [submodule "submodules/ha-carson-living"]
 	path = submodules/ha-carson-living
 	url = https://github.com/rado0x54/ha-carson-living.git
+	ignore = dirty
 [submodule "submodules/homeassistant-peloton-sensor"]
 	path = submodules/homeassistant-peloton-sensor
 	url = https://github.com/edwork/homeassistant-peloton-sensor.git
+	ignore = dirty
 [submodule "submodules/ha-samsungtv-custom"]
 	path = submodules/ha-samsungtv-custom
 	url = https://github.com/roberodin/ha-samsungtv-custom.git
+	ignore = dirty
