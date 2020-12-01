@@ -85,14 +85,14 @@ somneo:
 tplink:
   discovery: false
   dimmer:
-    - host: 172.28.0.112
-    - host: 172.28.0.113
-    - host: 172.28.0.114
+    - host: sw-entry.lan
+    - host: sw-hallway.lan
+    - host: sw-kitchen.lan
 
 # RoboRock
 vacuum:
   - platform: xiaomi_miio
-    host: 172.28.0.60
+    host: rockrobo.lan
     token: !secret miio_token
     name: "Smartin junior"
 
@@ -100,12 +100,12 @@ vacuum:
 camera:
   - platform: generic
     name: Home Cam Living Room
-    still_image_url: http://yi-cam-1:8080/cgi-bin/snapshot.sh
-    stream_source: rtsp://yi-cam-1/ch0_0.h264
+    still_image_url: http://yi-cam-1.lan:8080/cgi-bin/snapshot.sh
+    stream_source: rtsp://yi-cam-1.lan/ch0_0.h264
   - platform: generic
     name: Home Cam Kitchen
-    still_image_url: http://yi-cam-2:8080/cgi-bin/snapshot.sh
-    stream_source: rtsp://yi-cam-2/ch0_0.h264
+    still_image_url: http://yi-cam-2.lan:8080/cgi-bin/snapshot.sh
+    stream_source: rtsp://yi-cam-2.lan/ch0_0.h264
 
 telegram_bot:
   - platform: webhooks
@@ -116,21 +116,23 @@ telegram_bot:
       - !secret telegram_rado0x54_chatid
       - !secret telegram_jordan_chatid
 
-# Carson Living (from Submodule until released)
-#carson:
-#  username: !secret carson_username
-#  password: !secret carson_password
+# Carson Living
+carson:
+ username: !secret carson_username
+ password: !secret carson_password
 
 
 # Text to speech
 tts:
   - platform: google_translate
 
-#media_player:
-#  - platform: samsungtv_custom
-#    host: samsung
-#    port: 8002
-#    mac: 00:C3:F4:41:2D:FB
+media_player:
+ - platform: samsungtv_custom
+   host: samsung.lan
+   port: 8002
+   mac: 00:C3:F4:41:2D:FB
+   sourcelist: '{"AppleTV": "KEY_HDMI1", "Switch": "KEY_HDMI2", "PlayStation": "KEY_HDMI3"}'
+   protocol: ws
 
 # Workday Sensor
 binary_sensor:
