@@ -15,3 +15,6 @@
 [submodule "submodules/homeassistant-peloton-sensor"]
 	path = submodules/homeassistant-peloton-sensor
 	url = https://github.com/edwork/homeassistant-peloton-sensor.git
+[submodule "submodules/ha-samsungtv-custom"]
+	path = submodules/ha-samsungtv-custom
+	url = https://github.com/roberodin/ha-samsungtv-custom.git
