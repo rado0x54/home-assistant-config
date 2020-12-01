@@ -1,0 +1,24 @@
+- alias: 'Peloton - Turn on AC and Fan'
+  trigger:
+    platform: state
+    entity_id: sensor.peloton_rado0x54
+    to: 'Active'
+  action:
+    - service: climate.set_hvac_mode
+      entity_id: climate.office_a_c
+      data:
+        hvac_mode: cool
+    - service: fan.turn_on
+      entity_id: fan.office
+
+
+- alias: 'Peloton - Turn off AC and Fan'
+  trigger:
+    platform: state
+    entity_id: sensor.peloton_rado0x54
+    from: 'Active'
+  action:
+    - service: climate.turn_off
+      entity_id: climate.office_a_c
+    - service: fan.turn_off
+      entity_id: fan.office

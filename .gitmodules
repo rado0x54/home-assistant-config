@@ -16,3 +16,6 @@
 [submodule "submodules/ha-carson-living"]
 	path = submodules/ha-carson-living
 	url = https://github.com/rado0x54/ha-carson-living.git
+[submodule "submodules/homeassistant-peloton-sensor"]
+	path = submodules/homeassistant-peloton-sensor
+	url = https://github.com/edwork/homeassistant-peloton-sensor.git

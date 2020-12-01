@@ -1,0 +1,3 @@
+- platform: peloton
+  username: !secret peloton_username
+  password: !secret peloton_password
