@@ -1,7 +1,3 @@
-[submodule "submodules/ha-samsungtv-custom"]
-	path = submodules/ha-samsungtv-custom
-	url = https://github.com/xchwarze/ha-samsungtv-custom.git
-	ignore = dirty
 [submodule "submodules/homeassistant-mta-subway"]
 	path = submodules/homeassistant-mta-subway
 	url = https://github.com/iicky/homeassistant-mta-subway.git
