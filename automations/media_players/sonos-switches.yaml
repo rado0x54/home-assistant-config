@@ -71,9 +71,9 @@
         {% if trigger.event.data.event == 1002 %}
           media_player.living_room
         {% elif trigger.event.data.event == 1004 %}
-          media_player.kitchen
+          media_player.bathroom
         {% elif trigger.event.data.event == 1005 %}
-          media_player.bedroom
+          media_player.office
         {% else %}
           {# never reached due to condition #}
         {% endif %}

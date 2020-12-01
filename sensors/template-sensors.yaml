@@ -5,6 +5,6 @@
       value_template: >-
         {{ 
           is_state('media_player.living_room', 'playing') or
-          is_state('media_player.kitchen', 'playing') or
-          is_state('media_player.bedroom', 'playing')
+          is_state('media_player.bathroom', 'playing') or
+          is_state('media_player.office', 'playing')
         }}
