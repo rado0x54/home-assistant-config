@@ -99,15 +99,16 @@ vacuum:
 # Camera
 camera:
   - platform: generic
-    name: Home Cam Living Room
+    name: Home Cam Office
     still_image_url: http://yi-cam-1.lan:8080/cgi-bin/snapshot.sh
     stream_source: rtsp://yi-cam-1.lan/ch0_0.h264
   - platform: generic
-    name: Home Cam Kitchen
+    name: Home Cam Street
     still_image_url: http://yi-cam-2.lan:8080/cgi-bin/snapshot.sh
     stream_source: rtsp://yi-cam-2.lan/ch0_0.h264
-  - platform: generic
-    stream_source: rtsp://eufy-cam-1.lan/live0
+  - platform: ffmpeg
+    name: Babycam
+    input: -re -i rtsp://eufy-cam-1.lan/live0
 
 telegram_bot:
   - platform: webhooks
