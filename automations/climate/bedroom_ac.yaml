@@ -1,3 +1,4 @@
+# Turn on the Bedroom AC at 22:30 if anyone is home.
 - alias: 'Turn on Bedroom AC'
   trigger:
     - platform: time
@@ -7,15 +8,33 @@
     entity_id: group.all_people
     state: 'home'
   action:
-    service: climate.set_hvac_mode
-    entity_id: climate.bedroom_a_c
-    data:
-      hvac_mode: cool
+    - service: climate.set_hvac_mode
+      entity_id: climate.bedroom_a_c
+      data:
+        hvac_mode: cool
+    - service: climate.set_temperature
+      entity_id: climate.bedroom_a_c
+      data:
+        temperature: 19
 
+# During a workday turn off the AC at 7am
+- alias: 'Turn off Bedroom AC - Workday'
+  trigger:
+    - platform: time
+      at: '07:30:00'
+  condition:
+    condition: state
+    entity_id: 'binary_sensor.workday_sensor'
+    state: 'on'
+  action:
+    service: climate.turn_off
+    entity_id: climate.bedroom_a_c
+
+# Always turn off the Bedroom AC at 9am the latest.
 - alias: 'Turn off Bedroom AC'
   trigger:
     - platform: time
-      at: '07:00:00'
+      at: '09:00:00'
   action:
     service: climate.turn_off
     entity_id: climate.bedroom_a_c
