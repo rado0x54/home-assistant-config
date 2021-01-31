@@ -106,6 +106,8 @@ camera:
     name: Home Cam Kitchen
     still_image_url: http://yi-cam-2.lan:8080/cgi-bin/snapshot.sh
     stream_source: rtsp://yi-cam-2.lan/ch0_0.h264
+  - platform: generic
+    stream_source: rtsp://eufy-cam-1.lan/live0
 
 telegram_bot:
   - platform: webhooks
