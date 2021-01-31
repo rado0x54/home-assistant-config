@@ -109,6 +109,9 @@ camera:
   - platform: ffmpeg
     name: Babycam
     input: -re -i rtsp://eufy-cam-1.lan/live0
+  - platform: mqtt
+    name: Babycam - Last event
+    topic: !secret mqtt_babycam_thumbnail
 
 telegram_bot:
   - platform: webhooks
@@ -137,12 +140,6 @@ media_player:
    sourcelist: '{"AppleTV": "KEY_HDMI1", "Switch": "KEY_HDMI2", "PlayStation": "KEY_HDMI3"}'
    protocol: ws
 
-# Workday Sensor
-binary_sensor:
-  - platform: workday
-    country: US
-    province: NY
-
 # Shell Commands
 shell_command:
   link_latest: '(cd {{ working_directory }} && ln -fs $(ls -t {{ ls_expression }} | head -n 1) {{ latest_filename }})'
@@ -156,6 +153,7 @@ group: !include groups.yaml
 zone: !include zones.yaml
 homekit: !include homekit.yaml
 sensor: !include_dir_merge_list sensors/
+binary_sensor: !include_dir_merge_list binary_sensors/
 input_select: !include_dir_merge_named input_select/
 
 
