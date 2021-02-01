@@ -109,9 +109,6 @@ camera:
   - platform: ffmpeg
     name: Babycam
     input: -re -i rtsp://eufy-cam-1.lan/live0
-  - platform: mqtt
-    name: Babycam - Last event
-    topic: !secret mqtt_babycam_thumbnail
 
 telegram_bot:
   - platform: webhooks
